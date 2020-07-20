@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './header';
+import Footer from './footer';
 
 
 function Index() {
@@ -16,6 +17,7 @@ function Index() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }
