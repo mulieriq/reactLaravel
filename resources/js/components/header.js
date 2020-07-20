@@ -12,15 +12,10 @@ class Header extends Component {
                 <div>
                     <Link to="/">Home</Link>
                     <Link to="/about">About</Link>
-                    <Route path="/" component={Home} />
-                    <Route path="/about" component={About} />
-
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/about" component={About} />
                 </div>
-
-
             </Router>
-
-
         );
     }
 }

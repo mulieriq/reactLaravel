@@ -70039,9 +70039,11 @@ var Header = /*#__PURE__*/function (_Component) {
       }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/about"
       }, "About"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
         path: "/",
         component: _home__WEBPACK_IMPORTED_MODULE_3__["default"]
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
         path: "/about",
         component: _about__WEBPACK_IMPORTED_MODULE_2__["default"]
       })));
