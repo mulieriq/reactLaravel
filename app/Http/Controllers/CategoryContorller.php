@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class CategoryContorller extends Controller
 {
@@ -13,7 +14,8 @@ class CategoryContorller extends Controller
      */
     public function index()
     {
-        //
+        $data  = Category::all();
+        return $data;
     }
 
     /**
