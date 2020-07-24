@@ -4,8 +4,7 @@ class Listing extends Component {
     render() {
         return (
             <div>
-
-                <table class="table">
+                <table className="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -39,9 +38,6 @@ class Listing extends Component {
                         </tr>
                     </tbody>
                 </table>
-
-
-
             </div>
         );
     }

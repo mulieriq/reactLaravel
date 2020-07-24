@@ -7,14 +7,16 @@ class Category extends Component {
     render() {
         return (
             <div>
-                <Router> 
+                <Router>
                     <div>
-                        <Link to="/category">Category</Link>
-                        <Link to="/categoty/add">Add</Link>
-                        <Route exact path="/category" component={Listing} />
-                        <Route exact path="/category/add" component={Add} />
+                        <hr/>
+                        <Link to="/category"className="btn btn-success" >Category</Link> &nbsp;
+                        <Link to="/category/add" className="btn btn-primary">Add</Link>
+                        <Route exact path="/category/" component={Listing} />
+                        <Route exact path="/category/add/" component={Add} />
                     </div>
                 </Router>
+
             </div>
         );
     }
