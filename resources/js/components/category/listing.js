@@ -2,13 +2,17 @@ import { Component } from "react";
 import React from 'react';
 import Axios from "axios";
 import { Link } from "react-router-dom";
+import Pagination from 'react-js-pagination';
 
 class Listing extends Component {
 
     constructor() {
         super()
         this.state = {
-            categories: []
+            categories: [],
+            activePage= 1,
+            itemCountPerPage =1,
+            totalItemsCount=1
         }
     }
 
@@ -20,18 +24,23 @@ class Listing extends Component {
         })
     }
     onDelete(id) {
-        Axios.delete('http://127.0.0.1:8000/category/delete/'+id).then(r =>{
+        Axios.delete('http://127.0.0.1:8000/category/delete/' + id).then(r => {
 
-        var categories = this.state.categories
+            var categories = this.state.categories
 
-        for (var i=0 ; i<categories.length;i++){
-            if(categories[i].id == id){
-                categories.slice(i,1);
-                this.setState({categories:categories})
+            for (var i = 0; i < categories.length; i++) {
+                if (categories[i].id == id) {
+                    categories.slice(i, 1);
+                    this.setState({ categories: categories })
+                }
+
             }
+        })
+    }
 
-        }
-    })
+    handlePageChange() {
+        console.log(`activ page ${pageNumber}`)
+        this.setState({ activePage: pageNumber })
     }
 
     render() {
@@ -66,6 +75,19 @@ class Listing extends Component {
 
                     </tbody>
                 </table>
+
+                <Pagination>
+                    activePage= {this.state.activePage}
+                    itemCountPerPage ={5}
+                    totalItemsCount={100}
+                    pageRangeDisplay={5}
+                    onChange={this.handlePageChange}
+                </Pagination>
+                <div>
+
+
+
+                </div>
             </div>
         );
     }
