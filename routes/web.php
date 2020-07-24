@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('category', 'CategoryContorller@index');
+Route::post('category/store' , 'CategoryContorller@store');
+Route::delete('category/delete/{id}' , 'CategoryContorller@destroy');

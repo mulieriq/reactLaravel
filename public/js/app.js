@@ -72910,7 +72910,7 @@ var Add = /*#__PURE__*/function (_Component) {
     _this.onchangedCategoryname = _this.onchangedCategoryname.bind(_assertThisInitialized(_this));
     _this.onSubmit = _this.onsubmit.bind(_assertThisInitialized(_this));
     _this.state = {
-      category_name: ""
+      category_name: ''
     };
     return _this;
   }
@@ -72926,29 +72926,33 @@ var Add = /*#__PURE__*/function (_Component) {
     key: "onsubmit",
     value: function onsubmit(e) {
       e.preventDefault();
+      console.log(this.state.category_name);
       var category = {
         category_name: this.state.category_name
       };
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://127.0.0.1:8000/category/store', category).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://127.0.0.1:8000/category/store/', category).then(function (res) {
         return console.log(res.data);
       });
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.onsubmit
+        onSubmit: function onSubmit(e) {
+          return _this2.onsubmit(e);
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        "for": "exampleInputEmail1"
+        htmlFor: "category_name"
       }, "Catogries"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
         id: "category_name",
         value: this.state.category_name,
         onChange: this.onchangedCategoryname,
-        "aria-describedby": "emailHelp",
         placeholder: "Enter Categoty"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
@@ -73113,8 +73117,29 @@ var Listing = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "onDelete",
+    value: function onDelete(id) {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('http://127.0.0.1:8000/category/delete/' + id).then(function (r) {
+        var categories = _this3.state.categories;
+
+        for (var i = 0; i < categories.length; i++) {
+          if (categories[i].id == id) {
+            categories.slice(i, 1);
+
+            _this3.setState({
+              categories: categories
+            });
+          }
+        }
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
@@ -73127,10 +73152,15 @@ var Listing = /*#__PURE__*/function (_Component) {
         scope: "col"
       }, "Created At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Updated At"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.categories.map(function (element) {
+      }, "Updated At"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.categories.map(function (element) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
           scope: "row"
-        }, element.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, element.active), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, element.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, element.created_at), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, element.updated_at));
+        }, element.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, element.active), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, element.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, element.created_at), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, element.updated_at), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "#",
+          onClick: _this4.onDelete.bind(_this4, element.id)
+        }, "Delete")));
       }))));
     }
   }]);

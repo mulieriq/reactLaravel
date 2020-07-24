@@ -17,6 +17,20 @@ class Listing extends Component {
             )
         })
     }
+    onDelete(id) {
+        Axios.delete('http://127.0.0.1:8000/category/delete/'+id).then(r =>{
+
+        var categories = this.state.categories
+
+        for (var i=0 ; i<categories.length;i++){
+            if(categories[i].id == id){
+                categories.slice(i,1);
+                this.setState({categories:categories})
+            }
+
+        }
+    })
+    }
 
     render() {
         return (
@@ -29,6 +43,7 @@ class Listing extends Component {
                             <th scope="col">Status</th>
                             <th scope="col">Created At</th>
                             <th scope="col">Updated At</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +56,7 @@ class Listing extends Component {
                                         <td>{element.name}</td>
                                         <td>{element.created_at}</td>
                                         <td>{element.updated_at}</td>
+                                        <td><a href="#" onClick={this.onDelete.bind(this, element.id)}>Delete</a></td>
                                     </tr>
                                 )
                             })
