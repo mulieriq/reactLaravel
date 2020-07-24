@@ -6,9 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Index() {
     return (
-        <div className="container">
-            <Header />
-            <Footer />
+        <div className="container-fluid">
+            <div className="container"
+            >
+                <Header />
+                <Footer />
+            </div>
+
         </div>
     );
 }

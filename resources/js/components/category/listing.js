@@ -1,6 +1,8 @@
 import { Component } from "react";
 import React from 'react';
 import Axios from "axios";
+import { Link } from "react-router-dom";
+
 class Listing extends Component {
 
     constructor() {
@@ -56,7 +58,7 @@ class Listing extends Component {
                                         <td>{element.active == 1 ? "Active" : "Inactive"}</td>
                                         <td>{element.created_at}</td>
                                         <td>{element.updated_at}</td>
-                                        <td><a href="#" onClick={this.onDelete.bind(this, element.id)}>Edit</a> | <a href="#" onClick={this.onDelete.bind(this, element.id)}>Delete</a> </td>
+                                        <td><Link to={`/categorypage/edit/${element.id}`} >Edit</Link> | <a href="#" onClick={this.onDelete.bind(this, element.id)}>Delete</a> </td>
                                     </tr>
                                 )
                             })
