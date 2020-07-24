@@ -24,7 +24,7 @@ class Listing extends Component {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">Id</th>
                             <th scope="col">Category Name</th>
                             <th scope="col">Status</th>
                             <th scope="col">Created At</th>
@@ -36,7 +36,7 @@ class Listing extends Component {
                             this.state.categories.map((element) => {
                                 return (
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <th scope="row">{element.id}</th>
                                         <td>{element.active}</td>
                                         <td>{element.name}</td>
                                         <td>{element.created_at}</td>

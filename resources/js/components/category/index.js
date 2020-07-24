@@ -10,10 +10,10 @@ class Category extends Component {
                 <Router>
                     <div>
                         <hr/>
-                        <Link to="/category"className="btn btn-success" >Category</Link> &nbsp;
-                        <Link to="/category/add" className="btn btn-primary">Add</Link>
-                        <Route exact path="/category/" component={Listing} />
-                        <Route exact path="/category/add/" component={Add} />
+                        <Link to="/categorypage"className="btn btn-success" >Category</Link> &nbsp;
+                        <Link to="/categorypage/add" className="btn btn-primary">Add</Link>
+                        <Route exact path="/categorypage/" component={Listing} />
+                        <Route exact path="/categorypage/add/" component={Add} />
                     </div>
                 </Router>
 

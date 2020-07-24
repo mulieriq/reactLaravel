@@ -6,6 +6,8 @@ class Add extends Component {
 
     constructor() {
         super();
+        this.onchangedCategoryname = this.onchangedCategoryname.bind(this);
+        this.onSubmit = this.onsubmit.bind(this)
         this.state = {
             category_name: ""
         }
@@ -16,18 +18,15 @@ class Add extends Component {
     onsubmit(e) {
         e.preventDefault();
         const category = { category_name: this.state.category_name }
-
         Axios.post('http://127.0.0.1:8000/category/store', category).then(res => console.log(res.data))
     }
     render() {
-
         return (
             <div>
-
-                <form>
+                <form onSubmit={this.onsubmit}>
                     <div className="form-group">
                         <label for="exampleInputEmail1">Catogries</label>
-                        <input type="text" className="form-control" id="category_name" aria-describedby="emailHelp" placeholder="Enter Categoty" />
+                        <input type="text" className="form-control" id="category_name" value={this.state.category_name} onChange={this.onchangedCategoryname} aria-describedby="emailHelp" placeholder="Enter Categoty" />
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
