@@ -72868,6 +72868,8 @@ var About = /*#__PURE__*/function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -72893,18 +72895,43 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Add = /*#__PURE__*/function (_Component) {
   _inherits(Add, _Component);
 
   var _super = _createSuper(Add);
 
   function Add() {
+    var _this;
+
     _classCallCheck(this, Add);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this);
+    _this.state = {
+      category_name: ""
+    };
+    return _this;
   }
 
   _createClass(Add, [{
+    key: "onchangedCategoryname",
+    value: function onchangedCategoryname(e) {
+      this.setState({
+        category_name: e.target.value
+      });
+    }
+  }, {
+    key: "onsubmit",
+    value: function onsubmit(e) {
+      e.preventDefault();
+      var category = {
+        category_name: this.state.category_name
+      };
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://127.0.0.1:8000/category/store', category).then(function (res) {
+        return console.log(res.data);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
