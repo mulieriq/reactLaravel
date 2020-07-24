@@ -52,11 +52,11 @@ class Listing extends Component {
                                 return (
                                     <tr>
                                         <th scope="row">{element.id}</th>
-                                        <td>{element.active}</td>
                                         <td>{element.name}</td>
+                                        <td>{element.active == 1 ? "Active" : "Inactive"}</td>
                                         <td>{element.created_at}</td>
                                         <td>{element.updated_at}</td>
-                                        <td><a href="#" onClick={this.onDelete.bind(this, element.id)}>Delete</a></td>
+                                        <td><a href="#" onClick={this.onDelete.bind(this, element.id)}>Edit</a> | <a href="#" onClick={this.onDelete.bind(this, element.id)}>Delete</a> </td>
                                     </tr>
                                 )
                             })
