@@ -10,37 +10,50 @@ class Listing extends Component {
         super()
         this.state = {
             categories: [],
-            activePage= 1,
-            itemCountPerPage =1,
-            totalItemsCount=1
+            activePage: 1,
+            itemCountPerPage: 1,
+            totalItemsCount: 1
         }
+        this.handlePageChange = this.handlePageChange.bind(this)
     }
 
     componentDidMount() {
         Axios.get('http://127.0.0.1:8000/category').then(response => {
             this.setState(
-                { categories: response.data }
+                {
+                    categories: response.data.data,
+                    itemCountPerPage: response.data.per_page,
+                    totalItemsCount: response.data.total,
+                    activePage: response.data.current_page
+                }
             )
         })
     }
     onDelete(id) {
         Axios.delete('http://127.0.0.1:8000/category/delete/' + id).then(r => {
-
             var categories = this.state.categories
-
             for (var i = 0; i < categories.length; i++) {
                 if (categories[i].id == id) {
                     categories.slice(i, 1);
                     this.setState({ categories: categories })
                 }
-
             }
         })
     }
 
-    handlePageChange() {
-        console.log(`activ page ${pageNumber}`)
-        this.setState({ activePage: pageNumber })
+    handlePageChange(pageNumber) {
+        console.log(`active page ${pageNumber}`)
+        //this.setState({ activePage: pageNumber })
+        Axios.get('http://127.0.0.1:8000/category?page=' + pageNumber).then(response => {
+            this.setState(
+                {
+                    categories: response.data.data,
+                    itemCountPerPage: response.data.per_page,
+                    totalItemsCount: response.data.total,
+                    activePage: response.data.current_page
+                }
+            )
+        })
     }
 
     render() {
@@ -75,18 +88,18 @@ class Listing extends Component {
 
                     </tbody>
                 </table>
-
-                <Pagination>
-                    activePage= {this.state.activePage}
-                    itemCountPerPage ={5}
-                    totalItemsCount={100}
-                    pageRangeDisplay={5}
-                    onChange={this.handlePageChange}
-                </Pagination>
+                <div className='d-flex justify-content-center'>
+                    <Pagination
+                        activePage={this.state.activePage}
+                        itemsCountPerPage={this.state.itemCountPerPage}
+                        totalItemsCount={this.state.totalItemsCount}
+                        pageRangeDisplayed={3}
+                        onChange={this.handlePageChange}
+                        itemClass='page-item'
+                        linkClass='page-link'
+                    />
+                </div>
                 <div>
-
-
-
                 </div>
             </div>
         );

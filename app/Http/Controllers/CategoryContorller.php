@@ -14,7 +14,7 @@ class CategoryContorller extends Controller
      */
     public function index()
     {
-        $data  = Category::all();
+        $data  = Category::paginate(5);
         return $data;
     }
 
