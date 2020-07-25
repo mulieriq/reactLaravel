@@ -4,7 +4,7 @@ import Alert from 'react-bootstrap/Alert';
 class Footer extends Component{
     render() {
         return (
-           <div>FOoter</div>
+           <div>Footer</div>
         );
     }
 }
