@@ -93,7 +93,7 @@ class Listing extends Component {
                         activePage={this.state.activePage}
                         itemsCountPerPage={this.state.itemCountPerPage}
                         totalItemsCount={this.state.totalItemsCount}
-                        pageRangeDisplayed={3}
+                        pageRangeDisplayed={5}
                         onChange={this.handlePageChange}
                         itemClass='page-item'
                         linkClass='page-link'

@@ -8,18 +8,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Index() {
     return (
         <div className="container-fluid">
-            <div className="container"
-            >
+            <div className="container">
                 <Header />
                 <Footer />
             </div>
-
         </div>
     );
 }
-
 export default Index;
-
 if (document.getElementById('app')) {
     ReactDOM.render(<Router> <Index /></Router>, document.getElementById('app'));
 }
