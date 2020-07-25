@@ -74,7 +74,7 @@ class Listing extends Component {
                         {
                             this.state.categories.map((element) => {
                                 return (
-                                    <tr>
+                                    <tr key={element.id}>
                                         <th scope="row">{element.id}</th>
                                         <td>{element.name}</td>
                                         <td>{element.active == 1 ? "Active" : "Inactive"}</td>
