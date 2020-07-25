@@ -3,7 +3,6 @@ import { Alert } from 'react-bootstrap'
 
 class AlertSuccess extends Component {
 
-
     constructor(props) {
         super(props)
     }

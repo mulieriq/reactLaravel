@@ -8,17 +8,14 @@ class Category extends Component {
     render() {
         return (
             <div>
-
                 <div>
                     <hr />
                     <Link to="/categorypage" className="btn btn-success" >Category</Link> &nbsp;
-                        <Link to="/categorypage/add" className="btn btn-primary">Add</Link>
+                    <Link to="/categorypage/add" className="btn btn-primary">Add</Link>
                     <Route exact path="/categorypage/" component={Listing} />
                     <Route exact path="/categorypage/add/" component={Add} />
                     <Route exact path="/categorypage/edit/:id" component={EditPage} />
                 </div>
-
-
             </div>
         );
     }
