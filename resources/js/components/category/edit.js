@@ -15,14 +15,14 @@ class EditPage extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://127.0.0.1:8000/category/edit/'+this.props.match.params.id).then(res => this.setState({category_name:res.data.name}))
+        Axios.get('http://127.0.0.1:8000/api/category/edit/'+this.props.match.params.id).then(res => this.setState({category_name:res.data.name}))
 
     }
     onsubmit(e) {
         e.preventDefault();
         console.log(this.state.category_name)
         const category = { category_name: this.state.category_name }
-        Axios.put('http://127.0.0.1:8000/category/update/'+this.props.match.params.id, category).then(res => console.log(res.data))
+        Axios.put('http://127.0.0.1:8000/api/category/update/'+this.props.match.params.id, category).then(res => console.log(res.data))
     }
     render() {
         return (

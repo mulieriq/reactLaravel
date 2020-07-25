@@ -19,7 +19,7 @@ class Add extends Component {
         e.preventDefault();
         console.log(this.state.category_name)
         const category = { category_name: this.state.category_name }
-        Axios.post('http://127.0.0.1:8000/category/store/', category).then(res => console.log(res.data))
+        Axios.post('http://127.0.0.1:8000/api/category/store/', category).then(res => console.log(res.data))
     }
     render() {
         return (

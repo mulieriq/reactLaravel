@@ -13,12 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
+Route::get('/{path}', function () {
     return view('welcome');
-});
-
-Route::get('category', 'CategoryContorller@index');
-Route::post('category/store', 'CategoryContorller@store');
-Route::delete('category/delete/{id}', 'CategoryContorller@destroy');
-Route::get('category/edit/{id}', 'CategoryContorller@edit');
-Route::put('category/update/{id}', 'CategoryContorller@update');
+})->where('path', '.*');

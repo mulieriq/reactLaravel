@@ -73427,7 +73427,7 @@ var Add = /*#__PURE__*/function (_Component) {
       var category = {
         category_name: this.state.category_name
       };
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://127.0.0.1:8000/category/store/', category).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://127.0.0.1:8000/api/category/store/', category).then(function (res) {
         return console.log(res.data);
       });
     }
@@ -73535,7 +73535,7 @@ var EditPage = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/category/edit/' + this.props.match.params.id).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/category/edit/' + this.props.match.params.id).then(function (res) {
         return _this2.setState({
           category_name: res.data.name
         });
@@ -73549,7 +73549,7 @@ var EditPage = /*#__PURE__*/function (_Component) {
       var category = {
         category_name: this.state.category_name
       };
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.put('http://127.0.0.1:8000/category/update/' + this.props.match.params.id, category).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.put('http://127.0.0.1:8000/api/category/update/' + this.props.match.params.id, category).then(function (res) {
         return console.log(res.data);
       });
     }
@@ -73744,7 +73744,7 @@ var Listing = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/category').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/category').then(function (response) {
         _this2.setState({
           categories: response.data.data,
           itemCountPerPage: response.data.per_page,
@@ -73758,7 +73758,7 @@ var Listing = /*#__PURE__*/function (_Component) {
     value: function onDelete(id) {
       var _this3 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('http://127.0.0.1:8000/category/delete/' + id).then(function (r) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('http://127.0.0.1:8000/api/category/delete/' + id).then(function (r) {
         var categories = _this3.state.categories;
 
         for (var i = 0; i < categories.length; i++) {
@@ -73779,7 +73779,7 @@ var Listing = /*#__PURE__*/function (_Component) {
 
       console.log("active page ".concat(pageNumber)); //this.setState({ activePage: pageNumber })
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/category?page=' + pageNumber).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/category?page=' + pageNumber).then(function (response) {
         _this4.setState({
           categories: response.data.data,
           itemCountPerPage: response.data.per_page,

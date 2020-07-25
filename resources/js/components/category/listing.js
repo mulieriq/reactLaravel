@@ -18,7 +18,7 @@ class Listing extends Component {
     }
 
     componentDidMount() {
-        Axios.get('http://127.0.0.1:8000/category').then(response => {
+        Axios.get('http://127.0.0.1:8000/api/category').then(response => {
             this.setState(
                 {
                     categories: response.data.data,
@@ -30,7 +30,7 @@ class Listing extends Component {
         })
     }
     onDelete(id) {
-        Axios.delete('http://127.0.0.1:8000/category/delete/' + id).then(r => {
+        Axios.delete('http://127.0.0.1:8000/api/category/delete/' + id).then(r => {
             var categories = this.state.categories
             for (var i = 0; i < categories.length; i++) {
                 if (categories[i].id == id) {
@@ -44,7 +44,7 @@ class Listing extends Component {
     handlePageChange(pageNumber) {
         console.log(`active page ${pageNumber}`)
         //this.setState({ activePage: pageNumber })
-        Axios.get('http://127.0.0.1:8000/category?page=' + pageNumber).then(response => {
+        Axios.get('http://127.0.0.1:8000/api/category?page=' + pageNumber).then(response => {
             this.setState(
                 {
                     categories: response.data.data,
